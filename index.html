@@ -3,37 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rock Paper Scissors</title>
+    <title>Stone Paper Scissors</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div class="game-container">
-        <!-- Header Section -->
-        <h1>Rock Paper Scissors</h1>
-        
-        <p class="instruction">Select your Weapon</p>
+        <h1>Stone Paper Scissors</h1>
+        <p class="instruction">Choose your weapon</p>
 
-        <!-- Weapons / Buttons Section -->
+        <!-- Weapons Layout with correct IDs -->
         <div class="weapons-container">
-            <button class="weapon-btn" onclick="playGame('ROCK')">
+            <button class="weapon-btn" id="rock">
                 <span class="emoji">✊</span>
                 <span>Rock</span>
             </button>
-            <button class="weapon-btn" onclick="playGame('PAPER')">
+            <button class="weapon-btn" id="paper">
                 <span class="emoji">✋</span>
                 <span>Paper</span>
             </button>
-            <button class="weapon-btn" onclick="playGame('SCISSOR')">
+            <button class="weapon-btn" id="scissors">
                 <span class="emoji">✌️</span>
                 <span>Scissors</span>
             </button>
         </div>
 
-        <!-- Result Status (Who won the round) -->
-        <div class="result-display" id="resultText">Choose a weapon to start the game!</div>
+        <!-- Status display for current round -->
+        <div class="result-display" id="statusText">
+            Click a weapon to start the game!
+        </div>
 
-        <!-- Score Board Section (As shown in your image) -->
+        <!-- Scoreboard layout -->
         <div class="scoreboard">
             <div class="score-box">Won: <span id="winCount">0</span></div>
             <div class="divider"></div>
@@ -43,6 +43,7 @@
         </div>
     </div>
 
+    <!-- JavaScript connected at the very end -->
     <script src="script.js"></script>
 </body>
 </html>
