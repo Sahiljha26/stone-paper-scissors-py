@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="game-container">
+        <!-- Header Section -->
+        <h1>Rock Paper Scissors</h1>
+        
+        <p class="instruction">Select your Weapon</p>
+
+        <!-- Weapons / Buttons Section -->
+        <div class="weapons-container">
+            <button class="weapon-btn" onclick="playGame('ROCK')">
+                <span class="emoji">✊</span>
+                <span>Rock</span>
+            </button>
+            <button class="weapon-btn" onclick="playGame('PAPER')">
+                <span class="emoji">✋</span>
+                <span>Paper</span>
+            </button>
+            <button class="weapon-btn" onclick="playGame('SCISSOR')">
+                <span class="emoji">✌️</span>
+                <span>Scissors</span>
+            </button>
+        </div>
+
+        <!-- Result Status (Who won the round) -->
+        <div class="result-display" id="resultText">Choose a weapon to start the game!</div>
+
+        <!-- Score Board Section (As shown in your image) -->
+        <div class="scoreboard">
+            <div class="score-box">Won: <span id="winCount">0</span></div>
+            <div class="divider"></div>
+            <div class="score-box">Lost: <span id="loseCount">0</span></div>
+            <div class="divider"></div>
+            <div class="score-box">Draw: <span id="drawCount">0</span></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
