@@ -1,0 +1,93 @@
+/* Body settings for a premium dark layout */
+body {
+    background-color: #1a1d20; /* Dark screen background */
+    color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.game-container {
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 40px;
+    font-weight: 500;
+}
+
+.instruction {
+    color: #cccccc;
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+/* Weapons Layout (Buttons row) */
+.weapons-container {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 40px;
+}
+
+/* Individual Weapon Button styling matching the image */
+.weapon-btn {
+    background-color: #212529; /* Dark card background */
+    border: 1px solid #2d3238;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+/* Hover effect when mouse moves over the buttons */
+.weapon-btn:hover {
+    background-color: #2c3136;
+    transform: scale(1.05); /* Slight zoom in */
+}
+
+.emoji {
+    font-size: 32px;
+}
+
+/* Status display for current round's result */
+.result-display {
+    margin: 20px 0;
+    font-size: 16px;
+    color: #a0a0a0;
+    min-height: 40px;
+}
+
+/* Scoreboard layout at the bottom */
+.scoreboard {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #2d3238;
+    padding-top: 20px;
+    margin-top: 40px;
+}
+
+.score-box {
+    flex: 1;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* Vertical lines between scores */
+.divider {
+    width: 1px;
+    height: 20px;
+    background-color: #444;
+}
