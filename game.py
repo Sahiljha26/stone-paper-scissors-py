@@ -1,71 +1,49 @@
 import random
-l=["ROCK", "PAPER","SCISSOR"]
+from flask import Flask, request, jsonify
 
+app = Flask(__name__)
 
-while True:
-    computer_points=0
-    Player_points=0
-    User_choice=int(input('''
- GAME START....
-1 for Yes enter 1
-2 for NO-EXIT enter 2
-                          '''))
+# Core Game Logic inside Python
+def get_computer_choice():
+    return random.choice(["rock", "paper", "scissors"])
+
+@app.route('/play', methods=['POST'])
+def play_game():
+    data = request.get_json()
+    user_choice = data.get('choice')
+    comp_choice = get_computer_choice()
     
-    if User_choice==1:
-        for i in range (1,6):
-            userInput=int(input(''' 
-1 ROCK
-2 SCISSOR
-3 PAPER
-                                '''))
-            if userInput==1:
-                uoption="ROCK"
-            elif userInput==2:
-                uoption="SCISSOR"
-            elif userInput==3:
-                uoption="PAPER"
-            coption=random.choice(l)
-            print(uoption)
-            print(coption)
-            if coption==uoption:
-                print("Computer Value:",coption)
-                print("User Value:",uoption)
-                print("Game Draw")
-                computer_points=computer_points+1
-                Player_points= Player_points+1
-            elif(uoption=="ROCK" and coption=="SCISSOR")or (uoption=="SCISSOR" and coption=="PAPER")or(uoption=="PAPER" and coption=="ROCK"):
-                print("Computer Value:",coption)
-                print("User Value:",uoption)
-                print(" YOU win")
-                Player_points=Player_points+1
-            else:
-                print("Computer Value:",coption)
-                print("User Value:",uoption)
-                print(" COMPUTER win")
-                computer_points=computer_points+1
-                
-
-
-
-
-
-        if(Player_points==computer_points):
-            print("Match Draw")
-        elif(Player_points>computer_points):
-            print(f"You won the match,{Player_points}points")
-        else:
-            print(f"Computer wins,{computer_points}points")
-
-
-
-
-    
-    
-
-
-
-
+    # Logic verification
+    if user_choice == comp_choice:
+        result = "draw"
+        message = "Oops! It's a Draw 🤝"
+    elif (
+        (user_choice == "rock" and comp_choice == "scissors") or
+        (user_choice == "paper" and comp_choice == "rock") or
+        (user_choice == "scissors" and comp_choice == "paper")
+    ):
+        result = "win"
+        message = "Congrats, You Won! 🎉"
     else:
-        break
+        result = "lose"
+        message = "Oh no, You Lost! 😢"
+        
+    # Sending decision back to JavaScript/Browser
+    return jsonify({
+        'userChoice': user_choice,
+        'computerChoice': comp_choice,
+        'result': result,
+        'message': message
+    })
 
+# Setting up a simple rule for HTML connection (CORS workaround)
+@app.after_request
+def after_request(response):
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    response.headers.add('Access-Control-Allow-Headers', 'Content-Type')
+    response.headers.add('Access-Control-Allow-Methods', 'POST')
+    return response
 
+if __name__ == '__main__':
+    app.run(port=5000, debug=True)
+    
